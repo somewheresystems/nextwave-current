@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+body {
+  font-family: 'Merriweather', serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fafafa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.02em;
+  transform: scaleX(0.8); /* Narrow by 20% */
+  transform-origin: left;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  &:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+}
+
+.container {
+  padding: 2rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  font-family: 'Open Sans', sans-serif;
+  
+  th, td {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+}
+
+// Add subtle animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.header-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 2rem;
+}
+
+footer {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.search-and-filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.tag-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+
+  span:first-child {
+    font-weight: bold;
+  }
+
+  .selected-tag {
+    background-color: #e0e0e0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+
+    .remove-tag {
+      background: none;
+      border: none;
+      color: #666;
+      margin-left: 0.3rem;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0;
+      line-height: 1;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .clear-tags {
+    background: none;
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.8rem;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+.editor-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editor-title {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.02em;
+  transform: scaleX(0.8);
+  transform-origin: center;
+}
+
+.editor-box {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.editor-centered-layout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.editor-layout {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 0px;
+  max-width: 1800px;
+  width: 100%;
+}
+
+.editor-pane, .preview-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.editor-pane textarea {
+  flex-grow: 1;
+  min-height: 700px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  width: 100%;
+}
+
+.preview-content {
+  flex-grow: 1;
+  min-height: 700px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow-y: auto;
+  background-color: #fff;
+  width: 100%;
+}
+
+.article-preview {
+  max-width: 100%;
+  padding: 40px;
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  h1 { font-size: 2.5em; }
+  h2 { font-size: 2em; }
+  h3 { font-size: 1.75em; }
+  h4 { font-size: 1.5em; }
+  h5 { font-size: 1.25em; }
+  h6 { font-size: 1em; }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  a {
+    color: #0070f3;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul, ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+  }
+
+  blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+  }
+
+  code {
+    background-color: #f4f4f4;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+
+  pre {
+    background-color: #f4f4f4;
+    padding: 1em;
+    border-radius: 4px;
+    overflow-x: auto;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+}
+
+.download-button {
+  display: block;
+  width: 200px;
+  margin: 20px auto 0;
+  padding: 10px;
+  background-color: #202020;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #909090;
+  }
+}
+
+@media (max-width: 1200px) {
+  .editor-layout {
+    flex-direction: column;
+  }
+
+  .editor-pane, .preview-pane {
+    width: 100%;
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  position: relative;
+  height: 300px;
+}
+
+.header-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.main-nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  font-family: sans-serif;
+
+  a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+
+  &.full-width {
+    max-width: none;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// Add this new section for editor metadata styling
+.editor-metadata {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.editor-metadata-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.editor-metadata input[type="text"],
+.editor-metadata input[type="color"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.editor-metadata input[type="text"]:focus,
+.editor-metadata input[type="color"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.editor-metadata input[type="color"] {
+  padding: 5px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.editor-metadata input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.editor-metadata input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 2px;
+}
+
+// Update the existing styles for the ReactMde component
+.react-mde {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.react-mde-textarea {
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 10px;
+}
+
+.react-mde-toolbar {
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}
+
+.react-mde-toolbar button {
+  color: #333;
+}
+
+.react-mde-toolbar button:hover {
+  background-color: #e9ecef;
+}
+
+// Add this new section for mobile styling
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+
+  // Adjust header and main title
+  header {
+    height: auto;
+    min-height: 100px;
+  }
+
+  .header-image {
+    height: 100px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transform: none;
+  }
+
+  // Adjust subtitle
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    transform: none;
+  }
+
+  // Adjust search input
+  .search-input {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  // Adjust table layout
+  table {
+    font-size: 0.8rem;
+    
+    th, td {
+      padding: 0.5rem 0.25rem;
+    }
+  }
+
+  // Make table scrollable horizontally
+  .table-container {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  // Adjust main content area
+  main {
+    padding: 0.5rem 0;
+  }
+
+  // Adjust footer
+  footer {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
